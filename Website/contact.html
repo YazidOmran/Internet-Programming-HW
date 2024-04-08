@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendik Cultural Hub - Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Pendik Cultural Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Address:</strong> Pendik Cultural Hub, XYZ Street, Pendik, Istanbul</p>
+            <p><strong>Email:</strong> info@pendikculturalhub.com</p>
+            <p><strong>Phone:</strong> +90 123 456 789</p>
+        </div>
+        <div class="social-media">
+            <h3>Connect with Us</h3>
+            <ul>
+                <li><a href="https://www.facebook.com/pendikculturalhub">Facebook</a></li>
+                <li><a href="https://twitter.com/pendikcultural">Twitter</a></li>
+                <li><a href="https://www.instagram.com/pendikculturalhub">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="contact-form">
+            <h3>Send us a Message</h3>
+            <form id="contact-form" action="#" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+                <button type="button" id="submit-btn">Submit</button> <!-- Change type to button -->
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Pendik Cultural Hub</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById("contact-form");
+            var submitBtn = document.getElementById("submit-btn");
+
+            submitBtn.addEventListener("click", function(event) {
+                event.preventDefault(); 
+
+                alert("Thank you for your feedback! We'll get back to you soon.");
+
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>

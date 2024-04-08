@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendik Cultural Hub - Event Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Pendik Cultural Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="event-details">
+        <h2 id="event-title">Event Name</h2>
+        <img id="event-image" src="placeholder.jpg" alt="Event Image">
+        <p id="event-date">Date:</p>
+        <p id="event-time">Time:</p>
+        <p id="event-location">Location:</p>
+        <p id="event-description">Description:</p>
+
+        <h3>Comments</h3>
+        <form id="comment-form">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <ul id="comments-list">
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 Pendik Cultural Hub</p>
+    </footer>
+
+    <script>
+        document.getElementById('comment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const commentElement = document.createElement('li');
+            commentElement.innerHTML = `<strong>${name}</strong>: ${message}`;
+            document.getElementById('comments-list').appendChild(commentElement);
+            document.getElementById('name').value = '';
+            document.getElementById('message').value = '';
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventIdentifier = urlParams.get('event');
+
+        const eventDetails = {
+            traditionalMusicConcert: {
+                title: "Traditional Music Concert",
+                image: "Fest1.jpg",
+                date: "April 15, 2024",
+                time: "7:00 PM",
+                location: "Pendik Cultural Center",
+                description: "Join us for an enchanting evening of traditional Turkish music at the Pendik Cultural Center. The concert will feature performances by renowned artists, showcasing the rich heritage and soulful melodies of Anatolian music. Immerse yourself in the mesmerizing sounds of instruments such as the oud, ney, and kanun, and experience the magic of live music in a culturally vibrant atmosphere."
+            },
+            pendikSpringFestival: {
+                title: "Pendik Spring Festival",
+                image: "Fest6.webp",
+                date: "May 5-7, 2024",
+                time: "All day",
+                location: "Pendik City Park",
+                description: "Celebrate the arrival of spring at the Pendik Spring Festival in the picturesque Pendik City Park. This three-day event will feature a diverse range of activities for the whole family, including live music performances, cultural dance shows, arts and crafts exhibitions, and delicious food stalls offering traditional Turkish cuisine. Don't miss out on the opportunity to soak up the festive atmosphere and enjoy the beauty of nature in bloom."
+            },
+            artExhibitionColorsOfPendik: {
+                title: "Art Exhibition: Colors of Pendik",
+                image: "Art.jpg",
+                date: "June 10-30, 2024",
+                time: "10:00 AM - 6:00 PM (Closed on Mondays)",
+                location: "Pendik Art Gallery",
+                description: "Explore the vibrant world of contemporary art at the Colors of Pendik exhibition, hosted at the Pendik Art Gallery. Featuring works by local artists inspired by the colors, landscapes, and culture of Pendik, this exhibition offers a unique perspective on the district's artistic heritage. From abstract paintings to mixed media installations, immerse yourself in the creativity and diversity of Pendik's thriving art scene."
+            }
+        };
+
+        if (eventIdentifier && eventDetails[eventIdentifier]) {
+            const event = eventDetails[eventIdentifier];
+            document.getElementById('event-title').innerText = event.title;
+            document.getElementById('event-image').src = event.image;
+            document.getElementById('event-date').innerText += ` ${event.date}`;
+            document.getElementById('event-time').innerText += ` ${event.time}`;
+            document.getElementById('event-location').innerText += ` ${event.location}`;
+            document.getElementById('event-description').innerText += ` ${event.description}`;
+        } else {
+            document.getElementById('event-title').innerText = "Event Not Found";
+        }
+    </script>
+</body>
+</html>
